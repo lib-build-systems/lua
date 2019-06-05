@@ -37,18 +37,6 @@ set(EXECUTABLE_OUTPUT_PATH         "${CMAKE_BINARY_DIR}/bin${LIB_SUFFIX}")
 
 set (LIB_LUA_VER "53" CACHE STRING "Suffix of version (for library name) e.g lua53")
 
-#
-# Include dir COPY
-# If the source dir and the binary dir are not equals,
-# copy the content of libzond/cinlude to $/include
-# 
-if(NOT ${PROJECT_SOURCE_DIR} STREQUAL ${PROJECT_BINARY_DIR})
-	set(TEMP_INCLUDE_LUA_DIR_FROM "${PROJECT_SOURCE_DIR}/include")
-	set(TEMP_INCLUDE_LUA_DIR_TO   "${PROJECT_BINARY_DIR}")
-	message(STATUS "Copying include dirs from  ${TEMP_INCLUDE_LUA_DIR_FROM} to ${TEMP_INCLUDE_LUA_DIR_TO}")
-	file (COPY ${TEMP_INCLUDE_LUA_DIR_FROM} DESTINATION ${TEMP_INCLUDE_LUA_DIR_TO})
-endif()
-
 if (WIN32 AND NOT CYGWIN)
   # Windows systems
   option (LUA_WIN "Windows specific build." ON)
@@ -80,7 +68,7 @@ if (LUA_WIN)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE} /MT")
     set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_DEBUG} /MT")
-	set(CMAKE_C_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
     set(CMAKE_C_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
     set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELEASE} /MT")
     set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_DEBUG} /MT")
