@@ -117,7 +117,8 @@ add_library (liblua_static STATIC ${LIB_SRCS})
 target_link_libraries (liblua_static ${LIBS})
 set_target_properties (liblua_static PROPERTIES
                        OUTPUT_NAME lua${LIB_LUA_VER}_static
-                       CLEAN_DIRECT_OUTPUT 1)
+                       CLEAN_DIRECT_OUTPUT 1
+		       PUBLIC_HEADER "lua.h;lualib.h;lauxlib.h")
 
 add_executable (lua ${SRC_LUA})
 target_link_libraries (lua liblua ${LIBS})
@@ -131,12 +132,9 @@ install(TARGETS liblua liblua_static lua #luac
         EXPORT lua-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/lua)
         
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/lua
-        FILES_MATCHING PATTERN "*.h")
-
 install(EXPORT lua-targets
         NAMESPACE lua::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lua)
