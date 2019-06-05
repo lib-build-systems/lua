@@ -30,11 +30,6 @@ if (APPLE)
   list (APPEND LIBS readline)
 endif ()
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}" CACHE STRING "Library build output directory")
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib${LIB_SUFFIX}")
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin${LIB_SUFFIX}")
-set(EXECUTABLE_OUTPUT_PATH         "${CMAKE_BINARY_DIR}/bin${LIB_SUFFIX}")
-
 set (LIB_LUA_VER "53" CACHE STRING "Suffix of version (for library name) e.g lua53")
 
 if (WIN32 AND NOT CYGWIN)
@@ -104,7 +99,7 @@ set (SRC_LUAC luac.c)
 ## BUILD
 # Create dynamic library (dll, so)
 
-add_library (liblua SHARED ${LIB_SRCS} ${LUA_DLL_RC})
+add_library (liblua SHARED ${LIB_SRCS})
 
 target_link_libraries (liblua ${LIBS})
 set_target_properties (liblua PROPERTIES
@@ -124,10 +119,10 @@ set_target_properties (liblua_static PROPERTIES
                        OUTPUT_NAME lua${LIB_LUA_VER}_static
                        CLEAN_DIRECT_OUTPUT 1)
 
-add_executable (lua ${SRC_LUA} ${LUA_RC})
+add_executable (lua ${SRC_LUA})
 target_link_libraries (lua liblua ${LIBS})
 
-add_executable (luac ${SRC_LUAC} ${LUAC_RC})
+add_executable (luac ${SRC_LUAC})
 target_link_libraries (luac liblua_static)
 
 
