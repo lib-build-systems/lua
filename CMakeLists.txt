@@ -94,7 +94,7 @@ set (LIB_SRCS
    )
 		
 set (SRC_LUA  lua.c)
-set (SRC_LUAC luac.c)
+#set (SRC_LUAC luac.c)
 
 ## BUILD
 # Create dynamic library (dll, so)
@@ -122,12 +122,12 @@ set_target_properties (liblua_static PROPERTIES
 add_executable (lua ${SRC_LUA})
 target_link_libraries (lua liblua ${LIBS})
 
-add_executable (luac ${SRC_LUAC})
-target_link_libraries (luac liblua_static)
+#add_executable (luac ${SRC_LUAC})
+#target_link_libraries (luac liblua_static)
 
 
 # Installation of the Lua libraries
-install(TARGETS liblua liblua_static lua luac
+install(TARGETS liblua liblua_static lua #luac
         EXPORT lua-targets
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
