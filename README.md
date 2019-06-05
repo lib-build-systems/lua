@@ -14,7 +14,7 @@ Each branch in a repository defines a specific build system for a specific versi
 Yes please! I already have my hands full on creating a consistent cross-platform CMake experience for the libraries already included. If you have improvements or ready-and-tested config files for other build systems, don't hesitate to create pull requests per build system, per library version.
 
 # Lua
-Added CMakeLists.txt file for Lua version 1.2
+Added CMakeLists.txt file for Lua version 5.3
 * Default installation paths:
   * <CMAKE_INSTALL_PREFIX>/include/lua (.h, .hpp)
   * <CMAKE_INSTALL_PREFIX>/share/man (.1, .3, .5)
