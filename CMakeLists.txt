@@ -133,10 +133,9 @@ install(TARGETS liblua liblua_static lua #luac
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
         
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/inc/
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/lua
-        FILES_MATCHING PATTERN "*.h"
-        PATTERN ".git" EXCLUDE)
+        FILES_MATCHING PATTERN "*.h")
 
 install(EXPORT lua-targets
         NAMESPACE lua::
