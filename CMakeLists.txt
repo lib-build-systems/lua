@@ -118,7 +118,7 @@ target_link_libraries (liblua_static ${LIBS})
 set_target_properties (liblua_static PROPERTIES
                        OUTPUT_NAME lua${LIB_LUA_VER}_static
                        CLEAN_DIRECT_OUTPUT 1
-		       PUBLIC_HEADER "lua.h;lualib.h;lauxlib.h")
+		       PUBLIC_HEADER "lua.h;lualib.h;lauxlib.h;luaconf.h")
 
 add_executable (lua ${SRC_LUA})
 target_link_libraries (lua liblua ${LIBS})
