@@ -139,6 +139,6 @@ install(EXPORT lua-targets
         NAMESPACE lua::
         DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/lua)
 
-export(TARGETS lua-targets
-       NAMESPACE lua::)
+# export(TARGETS lua-targets
+#        NAMESPACE lua::)
 
